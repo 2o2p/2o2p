@@ -1,23 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>2o2p Server</title>
+<meta charset="UTF-8">
+<title>2o2p Anarchy</title>
+
+<style>
+body {
+    margin: 0;
+    background: #1a1a1a;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+/* верх */
+.header {
+    background: #2a2a2a;
+    padding: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* карточка */
+.card {
+    background: #2a2a2a;
+    margin: 40px auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+/* зелёный акцент */
+.green {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* кнопка */
+.button {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background: #4CAF50;
+    color: black;
+}
+
+/* текст */
+.desc {
+    margin: 20px 0;
+    color: #ccc;
+}
+</style>
+
 </head>
-<body style="background:black; color:white; text-align:center; font-family:Arial;">
+<body>
 
-    <h1>🔥 2o2p Anarchy 🔥</h1>
+<div class="header">
+🔥 2o2p Anarchy 🔥
+</div>
 
-    <p>IP сервера:</p>
-    <h2 id="ip">role-nine.gl.joinmc.link</h2>
+<div class="card">
 
-    <button onclick="copyIP()">Скопировать IP</button>
+<h2 class="green">2o2p server</h2>
+<p class="desc">
+Анархия без правил. Никаких вайпов. Делай что хочешь.
+</p>
 
-    <script>
-        function copyIP() {
-            navigator.clipboard.writeText("role-nine.gl.joinmc.link");
-            alert("IP скопирован!");
-        }
-    </script>
+<h1><span class="green">???</span> Playing Now</h1>
+
+<div class="button" onclick="copyIP()">
+📋 role-nine.gl.joinmc.link
+</div>
+
+<p style="color: gray;">Нажми чтобы скопировать</p>
+
+</div>
+
+<script>
+function copyIP() {
+    navigator.clipboard.writeText("role-nine.gl.joinmc.link");
+    alert("IP скопирован!");
+}
+</script>
 
 </body>
 </html>

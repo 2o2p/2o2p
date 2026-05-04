@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2O2P</title>
 
-<!-- МАЙН ШРИФТ -->
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
@@ -63,6 +62,22 @@ body {
 .blue { color:#00aaff; }
 .red { color:red; }
 
+/* ЯЗЫКИ */
+.lang {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.lang button {
+    background: black;
+    color: #00aaff;
+    border: none;
+    margin-left: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
 /* ЦЕНТР */
 .container {
     display: flex;
@@ -117,87 +132,172 @@ body {
 .date { color:#00aaff; }
 .logtext { color:red; }
 
+/* СОЦСЕТИ */
+.social {
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+
+.social-panel {
+    width:300px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.link {
+    background:black;
+    color:#00aaff;
+    padding:8px;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* ИКОНКИ */
+.icon {
+    width:16px;
+    height:16px;
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="bg">
-    <img src="1.png">
-    <img src="2.png">
-    <img src="3.png">
-    <img src="4.png">
-    <img src="5.png">
-    <img src="6.png">
-    <img src="7.png">
-    <img src="8.png">
-    <img src="9.png">
-    <img src="10.png">
+<img src="1.png"><img src="2.png"><img src="3.png"><img src="4.png"><img src="5.png">
+<img src="6.png"><img src="7.png"><img src="8.png"><img src="9.png"><img src="10.png">
 </div>
 
-<!-- ШАПКА -->
+<div class="lang">
+<button onclick="setLang('ru')">RU</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('es')">ES</button>
+</div>
+
 <div class="header">
-    <span class="blue">2O</span><span class="red">2</span><span class="red">P</span>
+<span class="blue">2O</span><span class="red">2</span><span class="red">P</span>
 </div>
 
 <div class="container">
-    <div class="panel">
+<div class="panel">
 
-        <div class="title">2O2P Server</div>
+<div class="title" id="title">2O2P — Op 1.7.10 Anarchy</div>
 
-        <div class="desc">
-            Анархия без правил. Никаких вайпов.<br>
-            Делай что хочешь.
-        </div>
+<div class="desc" id="desc">
+Анархия без правил. Никаких вайпов.<br>Делай что хочешь.
+</div>
 
-        <div id="status" class="status">Loading...</div>
+<div id="status" class="status">Loading...</div>
 
-        <div class="ip" onclick="copyIP()">
-            role-nine3.joinmc.link
-        </div>
+<div class="ip" onclick="copyIP()">role-nine3.joinmc.link</div>
 
-        <div class="copy">Нажми чтобы скопировать</div>
+<div class="copy" id="copy">Нажми чтобы скопировать</div>
 
-    </div>
+</div>
 </div>
 
 <div class="changelog">
 
-    <div class="log">
-        <div class="date">01.05.2026</div>
-        <div class="logtext">Впервые поставлен нелегальный бедрок</div>
-    </div>
+<div class="log">
+<div class="date">01.05.2026</div>
+<div class="logtext" id="log1">Впервые поставлен нелегальный бедрок</div>
+</div>
 
-    <div class="log">
-        <div class="date">02.05.2026</div>
-        <div class="logtext">Впервые поставлены нелегальные спавнера</div>
-    </div>
+<div class="log">
+<div class="date">02.05.2026</div>
+<div class="logtext" id="log2">Впервые поставлены нелегальные спавнера</div>
+</div>
 
-    <div class="log">
-        <div class="date">03.05.2026</div>
-        <div class="logtext">
-            Доступ к крыше незера и нелегальные блоки были заблокированы для теста
-        </div>
-    </div>
+<div class="log">
+<div class="date">03.05.2026</div>
+<div class="logtext" id="log3">Доступ к крыше незера и нелегальные блоки были заблокированы для теста</div>
+</div>
 
+</div>
+
+<div class="social">
+<div class="panel social-panel">
+
+<div class="title" id="socialTitle">Соцсети</div>
+
+<a href="https://discord.gg/Dk8pkzKhGt" target="_blank" class="link">
+<img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
+Discord
+</a>
+
+<a href="https://t.me/anarchy2o2p" target="_blank" class="link">
+<img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
+Telegram
+</a>
+
+</div>
 </div>
 
 <script>
 
 function copyIP(){
-    navigator.clipboard.writeText("role-nine3.joinmc.link");
+navigator.clipboard.writeText("role-nine3.joinmc.link");
 }
 
+/* сервер */
 fetch("https://api.mcsrvstat.us/2/role-nine3.joinmc.link")
 .then(res=>res.json())
 .then(data=>{
-    if(data.online){
-        document.getElementById("status").innerText =
-            data.players.online + " Playing Now";
-    } else {
-        document.getElementById("status").innerText = "Server Offline";
-    }
+if(data.online){
+document.getElementById("status").innerText =
+data.players.online + " Playing Now";
+}else{
+document.getElementById("status").innerText = "Server Offline";
+}
 });
+
+/* язык */
+function setLang(lang){
+localStorage.setItem("lang", lang);
+
+if(lang==="ru"){
+title.innerText="2O2P — Op 1.7.10 Anarchy";
+desc.innerHTML="Анархия без правил. Никаких вайпов.<br>Делай что хочешь.";
+copy.innerText="Нажми чтобы скопировать";
+socialTitle.innerText="Соцсети";
+
+log1.innerText="Впервые поставлен нелегальный бедрок";
+log2.innerText="Впервые поставлены нелегальные спавнера";
+log3.innerText="Доступ к крыше незера и нелегальные блоки были заблокированы для теста";
+}
+
+if(lang==="en"){
+title.innerText="2O2P — Op 1.7.10 Anarchy";
+desc.innerHTML="Anarchy server. No rules. No wipes.<br>Do whatever you want.";
+copy.innerText="Click to copy";
+socialTitle.innerText="Socials";
+
+log1.innerText="First illegal bedrock placed";
+log2.innerText="First illegal spawners placed";
+log3.innerText="Nether roof access and illegal blocks were blocked for testing";
+}
+
+if(lang==="es"){
+title.innerText="2O2P — Anarquía Op 1.7.10";
+desc.innerHTML="Servidor anárquico. Sin reglas. Sin wipes.<br>Haz lo que quieras.";
+copy.innerText="Haz clic para copiar";
+socialTitle.innerText="Redes";
+
+log1.innerText="Primera bedrock ilegal colocada";
+log2.innerText="Primeros spawners ilegales colocados";
+log3.innerText="Acceso al techo del Nether y bloques ilegales fueron bloqueados para pruebas";
+}
+}
+
+/* автозагрузка языка */
+window.onload = () => {
+const saved = localStorage.getItem("lang") || "ru";
+setLang(saved);
+};
 
 </script>
 

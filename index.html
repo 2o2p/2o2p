@@ -124,14 +124,14 @@ setInterval(() => {
     slides[i].classList.add("active");
 }, 4000);
 
-// онлайн
+// онлайн (НОВЫЙ API)
 function updateOnline() {
-    fetch("https://api.mcsrvstat.us/2/role-nine.gl.joinmc.link")
+    fetch("https://mcapi.us/server/status?ip=role-nine.gl.joinmc.link&port=25566")
     .then(res => res.json())
     .then(data => {
         document.getElementById("online").innerText =
             data.online
-            ? data.players.online + " Playing Now"
+            ? data.players.now + " Playing Now"
             : "Server Offline";
     });
 }

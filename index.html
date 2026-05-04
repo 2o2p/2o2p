@@ -4,28 +4,33 @@
 <meta charset="UTF-8">
 <title>2o2p</title>
 
-<!-- шрифт как в майне -->
-<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
-
 <style>
+
+/* подключаем твой шрифт */
+@font-face {
+    font-family: 'Minecraft';
+    src: url('Minecraft.ttf') format('truetype');
+}
+
+/* общий стиль */
 body {
     margin: 0;
     background: #1a1a1a;
-    font-family: 'Minecraft', Arial, sans-serif;
+    font-family: 'Minecraft', Arial;
     color: white;
     text-align: center;
 }
 
-/* верхняя панель */
+/* шапка */
 .header {
-    background: #00ff00; /* зелёный */
-    padding: 20px;
-    font-size: 32px;
+    background: #00FF00;
+    padding: 25px;
+    font-size: 40px;
 }
 
-/* цвета текста */
-.blue { color: #0000ff; }
-.red { color: #ff1a1a; }
+/* цвета */
+.red { color: #FF1A1A; }
+.blue { color: #0000FF; }
 
 /* карточка */
 .card {
@@ -37,10 +42,16 @@ body {
     border-radius: 10px;
 }
 
+/* текст */
+.desc {
+    margin: 20px 0;
+    color: #ccc;
+    font-size: 18px;
+}
+
 /* зелёный акцент */
 .green {
     color: #4CAF50;
-    font-weight: bold;
 }
 
 /* кнопка */
@@ -50,7 +61,7 @@ body {
     border: 2px solid #4CAF50;
     color: #4CAF50;
     cursor: pointer;
-    font-weight: bold;
+    font-size: 18px;
     transition: 0.2s;
 }
 
@@ -59,18 +70,13 @@ body {
     color: black;
 }
 
-/* описание */
-.desc {
-    margin: 20px 0;
-    color: #ccc;
-}
 </style>
 
 </head>
 <body>
 
 <div class="header">
-<span class="blue">2O</span><span class="red">2P</span>
+<span class="red">2O</span><span class="blue">2P</span>
 </div>
 
 <div class="card">

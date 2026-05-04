@@ -10,7 +10,7 @@
 /* ШРИФТ */
 @font-face {
     font-family: 'mc';
-    src: url('./Minecraftru.ttf');
+    src: url('./Minecraftru.ttf') format('truetype');
     font-display: swap;
 }
 
@@ -37,7 +37,6 @@ body {
     animation: fade 50s infinite;
 }
 
-/* ЗАДЕРЖКИ */
 .bg img:nth-child(1) { animation-delay: 0s; }
 .bg img:nth-child(2) { animation-delay: 5s; }
 .bg img:nth-child(3) { animation-delay: 10s; }
@@ -57,13 +56,18 @@ body {
     100% { opacity: 0; }
 }
 
-/* ШАПКА */
+/* ШАПКА (КАК РАНЬШЕ) */
 .header {
     background: #00ff00;
     text-align: center;
     padding: 12px;
-    color: black;
     font-size: 24px;
+    color: red; /* основной цвет */
+}
+
+/* СИНИЙ ЭФФЕКТ */
+.header span {
+    color: #00aaff;
 }
 
 /* ЦЕНТР */
@@ -150,7 +154,9 @@ body {
     <img src="10.png">
 </div>
 
-<div class="header">2o2P</div>
+<div class="header">
+    <span>2o2</span>P
+</div>
 
 <div class="container">
     <div class="panel">

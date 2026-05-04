@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>2O2P</title>
+<title>2o2p Server</title>
 
 <style>
 @font-face {
@@ -12,73 +12,76 @@
 
 body {
     margin: 0;
-    background: #000;
-    color: red;
+    background: black;
     font-family: 'Minecraft', Arial;
     text-align: center;
 }
 
-/* ШАПКА — ЧИСТЫЙ КИСЛОТНЫЙ */
-header {
+/* ШАПКА */
+.header {
     background: #00ff00;
-    padding: 10px;
+    padding: 15px;
     font-size: 24px;
 }
 
-/* ЛОГО */
-.logo .blue {
-    color: #0000ff;
+/* Цвета текста */
+.blue { color: #0000ff; }
+.red { color: #ff0000; }
+
+/* ПАНЕЛЬ */
+.panel {
+    margin: 60px auto;
+    width: 300px;
+    background: #00cc00; /* кислотный но мягче */
+    padding: 20px;
 }
 
-.logo .red {
+/* Текст */
+.main-text {
     color: #ff0000;
 }
 
-/* ПАНЕЛЬ — ПРОСТО ПРЯМОУГОЛЬНИК */
-.card {
-    background: #00ff00;
-    border: 2px solid #00ff00;
-    padding: 20px;
-    margin: 50px auto;
-    width: 90%;
-    max-width: 400px;
-}
-
-/* IP */
+/* IP блок */
 .ip-box {
-    margin-top: 10px;
+    border: 1px solid black;
     padding: 10px;
-    border: 1px solid #00ff00;
-    color: red;
+    margin-top: 15px;
+    background: #00aa00;
+    color: black;
     cursor: pointer;
 }
 </style>
+
 </head>
 
 <body>
 
-<header>
-    <div class="logo">
-        <span class="blue">2O</span><span class="red">2P</span>
-    </div>
-</header>
+<div class="header">
+    <span class="blue">2O</span><span class="red">2P</span>
+</div>
 
-<div class="card">
-    <h2>2o2p server</h2>
-    <p>Анархия без правил. Никаких вайпов. Делай что хочешь.</p>
+<div class="panel">
 
-    <p style="color:#00ff00;">??? Playing Now</p>
+    <h2 class="main-text">2o2p server</h2>
+
+    <p class="main-text">
+        Анархия без правил. Никаких вайпов. Делай что хочешь.
+    </p>
+
+    <h3 class="main-text">??? Playing Now</h3>
 
     <div class="ip-box" onclick="copyIP()">
         role-nine.gl.joinmc.link
     </div>
 
-    <p>Нажми чтобы скопировать</p>
+    <p class="main-text">Нажми чтобы скопировать</p>
+
 </div>
 
 <script>
 function copyIP() {
     navigator.clipboard.writeText("role-nine.gl.joinmc.link");
+    alert("IP скопирован");
 }
 </script>
 

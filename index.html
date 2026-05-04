@@ -10,13 +10,13 @@
     src: url('Minecraft.ttf');
 }
 
-body {
+html, body {
     margin: 0;
+    height: 100%;
     font-family: 'Minecraft';
     background: black;
 }
 
-/* ШАПКА */
 .header {
     background: #00ff00;
     text-align: center;
@@ -27,11 +27,12 @@ body {
 .logo-blue { color: #0040ff; }
 .logo-red { color: #ff0000; }
 
-/* ФОН */
 .bg {
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
     z-index: -1;
 }
 
@@ -48,7 +49,6 @@ body {
     opacity: 1;
 }
 
-/* затемнение */
 .bg::after {
     content: "";
     position: absolute;
@@ -57,7 +57,6 @@ body {
     background: rgba(0,0,0,0.6);
 }
 
-/* ПАНЕЛЬ */
 .box {
     margin: 100px auto;
     width: 300px;
@@ -67,7 +66,6 @@ body {
     color: red;
 }
 
-/* IP */
 .ip {
     margin-top: 10px;
     padding: 8px;
@@ -80,7 +78,6 @@ body {
 
 <body>
 
-<!-- ФОН -->
 <div class="bg">
     <img src="1.png" class="active">
     <img src="2.png">
@@ -94,12 +91,10 @@ body {
     <img src="10.png">
 </div>
 
-<!-- ШАПКА -->
 <div class="header">
     <span class="logo-blue">2O</span><span class="logo-red">2P</span>
 </div>
 
-<!-- ПАНЕЛЬ -->
 <div class="box">
     <h2>2o2p Server</h2>
     <p>Анархия без правил. Никаких вайпов. Делай что хочешь.</p>
@@ -114,7 +109,6 @@ body {
 </div>
 
 <script>
-// фон
 let slides = document.querySelectorAll(".bg img");
 let i = 0;
 
@@ -124,22 +118,25 @@ setInterval(() => {
     slides[i].classList.add("active");
 }, 4000);
 
-// онлайн (НОВЫЙ API)
 function updateOnline() {
-    fetch("https://mcapi.us/server/status?ip=role-nine.gl.joinmc.link&port=25566")
+    fetch("https://api.mcsrvstat.us/2/role-nine.gl.joinmc.link:25566")
     .then(res => res.json())
     .then(data => {
-        document.getElementById("online").innerText =
-            data.online
-            ? data.players.now + " Playing Now"
-            : "Server Offline";
+        if (data.online) {
+            document.getElementById("online").innerText =
+                data.players.online + " Playing Now";
+        } else {
+            document.getElementById("online").innerText = "Server Offline";
+        }
+    })
+    .catch(() => {
+        document.getElementById("online").innerText = "Error";
     });
 }
 
 updateOnline();
 setInterval(updateOnline, 10000);
 
-// копирование IP
 function copyIP() {
     navigator.clipboard.writeText("role-nine.gl.joinmc.link");
 }

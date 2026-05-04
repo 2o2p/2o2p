@@ -14,16 +14,23 @@ body {
     margin: 0;
     font-family: 'Minecraft';
     background: black;
-    color: red;
 }
 
 /* ШАПКА */
 .header {
-    background: #00ff00; /* кислотный зеленый */
+    background: #00ff00; /* кислотный */
     text-align: center;
     padding: 10px;
     font-size: 24px;
-    font-family: 'Minecraft';
+}
+
+/* фикс цветов */
+.logo-blue {
+    color: #0040ff;
+}
+
+.logo-red {
+    color: #ff0000;
 }
 
 /* ФОН */
@@ -47,7 +54,7 @@ body {
     opacity: 1;
 }
 
-/* затемнение для читаемости */
+/* затемнение */
 .bg::after {
     content: "";
     position: absolute;
@@ -60,12 +67,13 @@ body {
 .box {
     margin: 100px auto;
     width: 300px;
-    background: #00cc00; /* кислотная панель */
+    background: #00ff00; /* кислотная панель */
     padding: 20px;
     text-align: center;
+    color: red;
 }
 
-/* инпут */
+/* IP */
 .ip {
     margin-top: 10px;
     padding: 8px;
@@ -91,7 +99,7 @@ body {
 </div>
 
 <div class="header">
-    <span style="color:#0040ff;">2O</span><span style="color:#ff0000;">2P</span>
+    <span class="logo-blue">2O</span><span class="logo-red">2P</span>
 </div>
 
 <div class="box">

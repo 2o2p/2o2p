@@ -17,7 +17,6 @@ html, body {
     background: black;
 }
 
-/* ШАПКА */
 .header {
     background: #00ff00;
     text-align: center;
@@ -28,7 +27,6 @@ html, body {
 .logo-blue { color: #0040ff; }
 .logo-red { color: #ff0000; }
 
-/* ФОН */
 .bg {
     position: fixed;
     width: 100%;
@@ -59,7 +57,6 @@ html, body {
     background: rgba(0,0,0,0.6);
 }
 
-/* ОСНОВНАЯ ПАНЕЛЬ */
 .box {
     margin: 100px auto 20px;
     width: 300px;
@@ -69,12 +66,10 @@ html, body {
     color: red;
 }
 
-/* ОНЛАЙН */
 #online {
     color: #00aaff;
 }
 
-/* IP */
 .ip {
     margin-top: 10px;
     padding: 8px;
@@ -83,26 +78,22 @@ html, body {
     cursor: pointer;
 }
 
-/* ИСТОРИЯ */
+/* история */
 .history {
     width: 300px;
     margin: 0 auto 50px;
 }
 
-/* ОТДЕЛЬНАЯ ПАНЕЛЬ */
 .history-item {
     background: #00ff00;
     padding: 10px;
     margin-bottom: 10px;
 }
 
-/* ДАТА */
 .date {
     color: #0040ff;
-    margin-bottom: 5px;
 }
 
-/* ТЕКСТ */
 .text {
     color: #ff0000;
 }
@@ -141,7 +132,6 @@ html, body {
     <p style="margin-top:10px;">Нажми чтобы скопировать</p>
 </div>
 
-<!-- ИСТОРИЯ -->
 <div class="history">
 
     <div class="history-item">
@@ -162,7 +152,6 @@ html, body {
 </div>
 
 <script>
-// фон
 let slides = document.querySelectorAll(".bg img");
 let i = 0;
 
@@ -172,7 +161,6 @@ setInterval(() => {
     slides[i].classList.add("active");
 }, 4000);
 
-// онлайн
 function updateOnline() {
     fetch("https://api.mcsrvstat.us/2/role-nine.gl.joinmc.link:25566")
     .then(res => res.json())
@@ -183,116 +171,6 @@ function updateOnline() {
         } else {
             document.getElementById("online").innerText =
                 "Server Offline";
-        }
-    })
-    .catch(() => {
-        document.getElementById("online").innerText = "Error";
-    });
-}
-
-updateOnline();
-setInterval(updateOnline, 10000);
-
-// копирование
-function copyIP() {
-    navigator.clipboard.writeText("role-nine.gl.joinmc.link");
-}
-</script>
-
-</body>
-</html>}
-
-.bg img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 2s;
-}
-
-.bg img.active {
-    opacity: 1;
-}
-
-.bg::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-}
-
-.box {
-    margin: 100px auto;
-    width: 300px;
-    background: #00ff00;
-    padding: 20px;
-    text-align: center;
-    color: red;
-}
-
-.ip {
-    margin-top: 10px;
-    padding: 8px;
-    background: black;
-    color: #00ffcc;
-    cursor: pointer;
-}
-</style>
-</head>
-
-<body>
-
-<div class="bg">
-    <img src="1.png" class="active">
-    <img src="2.png">
-    <img src="3.png">
-    <img src="4.png">
-    <img src="5.png">
-    <img src="6.png">
-    <img src="7.png">
-    <img src="8.png">
-    <img src="9.png">
-    <img src="10.png">
-</div>
-
-<div class="header">
-    <span class="logo-blue">2O</span><span class="logo-red">2P</span>
-</div>
-
-<div class="box">
-    <h2>2o2p Server</h2>
-    <p>Анархия без правил. Никаких вайпов. Делай что хочешь.</p>
-
-    <p id="online">Loading...</p>
-
-    <div class="ip" onclick="copyIP()">
-        role-nine.gl.joinmc.link
-    </div>
-
-    <p style="margin-top:10px;">Нажми чтобы скопировать</p>
-</div>
-
-<script>
-let slides = document.querySelectorAll(".bg img");
-let i = 0;
-
-setInterval(() => {
-    slides[i].classList.remove("active");
-    i = (i + 1) % slides.length;
-    slides[i].classList.add("active");
-}, 4000);
-
-function updateOnline() {
-    fetch("https://api.mcsrvstat.us/2/role-nine.gl.joinmc.link:25566")
-    .then(res => res.json())
-    .then(data => {
-        if (data.online) {
-            document.getElementById("online").innerText =
-                data.players.online + " Playing Now";
-        } else {
-            document.getElementById("online").innerText = "Server Offline";
         }
     })
     .catch(() => {

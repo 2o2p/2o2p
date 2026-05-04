@@ -18,20 +18,14 @@ body {
 
 /* ШАПКА */
 .header {
-    background: #00ff00; /* кислотный */
+    background: #00ff00;
     text-align: center;
     padding: 10px;
     font-size: 24px;
 }
 
-/* фикс цветов */
-.logo-blue {
-    color: #0040ff;
-}
-
-.logo-red {
-    color: #ff0000;
-}
+.logo-blue { color: #0040ff; }
+.logo-red { color: #ff0000; }
 
 /* ФОН */
 .bg {
@@ -67,7 +61,7 @@ body {
 .box {
     margin: 100px auto;
     width: 300px;
-    background: #00ff00; /* кислотная панель */
+    background: #00ff00;
     padding: 20px;
     text-align: center;
     color: red;
@@ -79,12 +73,14 @@ body {
     padding: 8px;
     background: black;
     color: #00ffcc;
+    cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
+<!-- ФОН -->
 <div class="bg">
     <img src="1.png" class="active">
     <img src="2.png">
@@ -98,21 +94,27 @@ body {
     <img src="10.png">
 </div>
 
+<!-- ШАПКА -->
 <div class="header">
     <span class="logo-blue">2O</span><span class="logo-red">2P</span>
 </div>
 
+<!-- ПАНЕЛЬ -->
 <div class="box">
     <h2>2o2p Server</h2>
     <p>Анархия без правил. Никаких вайпов. Делай что хочешь.</p>
-    <p>??? Playing Now</p>
 
-    <div class="ip">role-nine.gl.joinmc.link</div>
+    <p id="online">Loading...</p>
+
+    <div class="ip" onclick="copyIP()">
+        role-nine.gl.joinmc.link
+    </div>
 
     <p style="margin-top:10px;">Нажми чтобы скопировать</p>
 </div>
 
 <script>
+// фон
 let slides = document.querySelectorAll(".bg img");
 let i = 0;
 
@@ -121,6 +123,26 @@ setInterval(() => {
     i = (i + 1) % slides.length;
     slides[i].classList.add("active");
 }, 4000);
+
+// онлайн
+function updateOnline() {
+    fetch("https://api.mcsrvstat.us/2/role-nine.gl.joinmc.link")
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("online").innerText =
+            data.online
+            ? data.players.online + " Playing Now"
+            : "Server Offline";
+    });
+}
+
+updateOnline();
+setInterval(updateOnline, 10000);
+
+// копирование IP
+function copyIP() {
+    navigator.clipboard.writeText("role-nine.gl.joinmc.link");
+}
 </script>
 
 </body>
